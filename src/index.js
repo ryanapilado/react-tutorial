@@ -3,18 +3,41 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
+
+  // we don't need the constructor anymore since state stored in board
+  // Squares are 'controlled components'; parent has full control over them
+
   render() {
     return (
-      <button className="square">
-        {/* TODO */}
+      // {this.props.onClick} works as well
+      <button className="square" onClick={() => this.props.onClick()}>
+        {this.props.value}
       </button>
     );
   }
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        squares: Array(9).fill(null)
+    };
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice(); // makes a copy of the list
+    squares[i] = 'X';
+    this.setState({squares: squares}); // triggers re-render of board and all squares
+  }
+
   renderSquare(i) {
-    return <Square />;
+    return ( 
+        <Square 
+            value={this.state.squares[i]}
+            onClick={() => this.handleClick(i)} // pass handler and i as a closure
+        />
+    );
   }
 
   render() {
