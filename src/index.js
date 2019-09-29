@@ -2,19 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
-
-  // we don't need the constructor anymore since state stored in board
-  // Squares are 'controlled components'; parent has full control over them
-
-  render() {
+function Square(props) {
     return (
-      // {this.props.onClick} works as well
-      <button className="square" onClick={() => this.props.onClick()}>
-        {this.props.value}
-      </button>
+        <button className="square" onClick={props.onClick}>
+            {props.value}
+        </button>
     );
-  }
 }
 
 class Board extends React.Component {
