@@ -1,5 +1,12 @@
 # Tutorial Notes
 
+### Overview
+
+* Components in React have a render() method which returns JSX
+* JSX can refer to previously defined components and evaluate expressions inside curly braces
+* A component can pass properties to children as attributes, in the child it is accessible in `this.props`
+* In a constructor, always call `super(props)` at the top
+
 ### Lifting State Up
 
 * It's usually better to store state in a parent component, and then pass that state down to children as properties
