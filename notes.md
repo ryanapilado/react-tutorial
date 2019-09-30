@@ -32,6 +32,18 @@
 * When should I use one or the other then?
 * I didn't even have to change any of the code inside board - JSX treats the classes and functions identically. Square inside the jsx calls either Square the function or Square the class.
 
+### Picking a Key
+
+* Each child in an array or iterator should have a unique "key" prop
+* They key can be anything as long as it's unique within the sibling components (doesn't need to be globally unique)
+* This allows React to keep track of which item is which between re-renders
+    * If current list has item with new key, React creates a component
+    * If current list is missing a key, React destroys that component
+    * If two keys match, React moves the component
+* `key` is a reserved property, but it's not stored in `props`
+* After element creation, React stores the `key` directly on the returned element
+* If not key specified, React will use the array indice by default, but this is problematic when re-ordering items the list or inserting/removing etc.
+
 
     
 
